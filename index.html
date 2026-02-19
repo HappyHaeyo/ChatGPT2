@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>캐릭터 헬스 케어 챗 앱</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="hero card">
+      <h1>헬스 캐릭터 메이트</h1>
+      <p>하단 내비게이션으로 화면을 전환해 관리하세요.</p>
+    </header>
+
+    <section class="page card" data-page="character">
+      <h2>캐릭터 만들기</h2>
+      <div class="avatar-wrap">
+        <img id="avatarPreview" class="avatar" alt="캐릭터 아바타" />
+      </div>
+      <form id="characterForm" class="stacked-form">
+        <label for="characterName">캐릭터 이름</label>
+        <input id="characterName" type="text" required />
+        <label for="characterTone">캐릭터 말투/성격</label>
+        <textarea id="characterTone" rows="3" required></textarea>
+        <label for="characterImage">이미지 에셋 업로드</label>
+        <input id="characterImage" type="file" accept="image/*" />
+        <button type="submit">저장</button>
+      </form>
+    </section>
+
+    <section class="page card hidden" data-page="chat">
+      <h2 id="chatTitle">캐릭터와 대화</h2>
+      <div id="chatLog" class="chat-log"></div>
+      <form id="chatForm" class="chat-form">
+        <input id="chatInput" type="text" placeholder="오늘 상태를 말해보세요" required />
+        <button type="submit">전송</button>
+      </form>
+    </section>
+
+    <section class="page card hidden" data-page="routine">
+      <h2>루틴 체크</h2>
+      <div class="toggle-grid">
+        <button type="button" id="medBtn" class="toggle-btn">💊 약 복용</button>
+        <button type="button" id="workoutBtn" class="toggle-btn">🏃 운동</button>
+      </div>
+      <div class="water-box">
+        <p>💧 물 마신 컵 수</p>
+        <div class="water-actions">
+          <button type="button" id="waterMinus">-</button>
+          <strong id="waterCount">0</strong>
+          <button type="button" id="waterPlus">+</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="page card hidden" data-page="report">
+      <h2>식단 결과표</h2>
+      <form id="mealForm" class="stacked-form">
+        <label for="breakfastInput">아침</label>
+        <input id="breakfastInput" type="text" placeholder="예: 그릭요거트" />
+        <label for="lunchInput">점심</label>
+        <input id="lunchInput" type="text" placeholder="예: 닭가슴살 샐러드" />
+        <label for="dinnerInput">저녁</label>
+        <input id="dinnerInput" type="text" placeholder="예: 연어 샐러드" />
+        <button type="submit">오늘 식단 저장</button>
+      </form>
+
+      <article class="daily-summary">
+        <h3>오늘 정산</h3>
+        <p id="todaySummary"></p>
+        <small id="currentDateLabel"></small>
+      </article>
+
+      <article>
+        <h3>지난 24시간 정산 기록</h3>
+        <ul id="historyList" class="history-list"></ul>
+      </article>
+    </section>
+  </main>
+
+  <nav class="bottom-nav card" aria-label="하단 메뉴">
+    <button class="menu-btn active" data-page="character"><span>🏠</span><em>캐릭터</em></button>
+    <button class="menu-btn" data-page="chat"><span>💬</span><em>채팅</em></button>
+    <button class="menu-btn" data-page="routine"><span>✅</span><em>루틴</em></button>
+    <button class="menu-btn" data-page="report"><span>📊</span><em>결과표</em></button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>
