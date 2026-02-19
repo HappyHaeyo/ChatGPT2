@@ -1,0 +1,192 @@
+:root {
+  --bg: #0f111a;
+  --card: #191d2b;
+  --card-soft: #21263a;
+  --text: #f3f4f8;
+  --muted: #afb6ca;
+  --accent: #7b7fff;
+  --accent-soft: #2f3560;
+  --ok: #2dbf7f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #1b2140 0%, var(--bg) 60%);
+  color: var(--text);
+  font-family: "Noto Sans KR", system-ui, -apple-system, sans-serif;
+}
+
+.app-shell {
+  width: min(1180px, 100% - 1rem);
+  margin: 0.5rem auto;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 0.75rem;
+  min-height: calc(100vh - 1rem);
+}
+
+.card {
+  background: rgba(25, 29, 43, 0.94);
+  border: 1px solid #2b3149;
+  border-radius: 18px;
+  padding: 0.9rem;
+  backdrop-filter: blur(8px);
+}
+
+.profile-panel {
+  overflow: auto;
+}
+
+h1, h2, p { margin-top: 0; }
+
+h1 { font-size: 1.2rem; }
+h2 { font-size: 1rem; }
+
+.muted { color: var(--muted); }
+
+.avatar-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.7rem;
+}
+
+.avatar {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #404975;
+  background: #30364f;
+}
+
+.stacked-form {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 0.8rem;
+}
+
+label {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+input, textarea, button {
+  font: inherit;
+  border-radius: 10px;
+  border: 1px solid #3c4464;
+  background: #14182a;
+  color: var(--text);
+  padding: 0.55rem 0.65rem;
+}
+
+textarea { resize: vertical; }
+
+button {
+  background: var(--accent);
+  border: 0;
+  font-weight: 600;
+}
+
+.status-card, .meal-card {
+  background: var(--card-soft);
+  border-radius: 14px;
+  padding: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+
+.toggle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+}
+
+.toggle-btn {
+  background: #31395a;
+}
+
+.toggle-btn.active {
+  background: var(--ok);
+  color: #072417;
+}
+
+.water-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.water-actions button {
+  width: 36px;
+  padding: 0.3rem;
+  background: var(--accent-soft);
+}
+
+.chat-panel {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 0;
+}
+
+.chat-log {
+  overflow: auto;
+  padding: 0.6rem;
+  border-radius: 12px;
+  border: 1px solid #323957;
+  background: #0e1220;
+}
+
+.msg {
+  display: flex;
+  gap: 0.45rem;
+  margin-bottom: 0.65rem;
+}
+
+.msg.user { justify-content: flex-end; }
+
+.msg .bubble {
+  max-width: min(84%, 540px);
+  padding: 0.5rem 0.6rem;
+  border-radius: 12px;
+  background: #2a3358;
+}
+
+.msg.user .bubble { background: #5d66ce; }
+
+.msg .avatar-mini {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #41475f;
+}
+
+.chat-composer {
+  margin-top: 0.7rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.45rem;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .profile-panel {
+    max-height: none;
+  }
+
+  .chat-panel {
+    min-height: 56vh;
+  }
+
+  .chat-composer {
+    position: sticky;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(25, 29, 43, 0.98), rgba(25, 29, 43, 0.7));
+    padding-top: 0.45rem;
+  }
+}

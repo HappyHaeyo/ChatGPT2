@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>캐릭터 헬스 케어 챗 앱</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="profile-panel card">
+      <h1>나만의 캐릭터</h1>
+      <p class="muted">SillyTavern 느낌으로 캐릭터와 건강 루틴을 기록해요.</p>
+
+      <div class="avatar-wrap">
+        <img id="avatarPreview" class="avatar" alt="캐릭터 아바타" />
+      </div>
+
+      <form id="characterForm" class="stacked-form">
+        <label for="characterName">캐릭터 이름</label>
+        <input id="characterName" type="text" placeholder="예: 루나" required />
+
+        <label for="characterTone">말투/성격</label>
+        <textarea id="characterTone" rows="3" placeholder="예: 다정하고 상냥한 응원형" required></textarea>
+
+        <label for="characterImage">이미지 에셋</label>
+        <input id="characterImage" type="file" accept="image/*" />
+
+        <button type="submit">캐릭터 저장</button>
+      </form>
+
+      <section class="status-card">
+        <h2>오늘 체크</h2>
+        <div class="toggle-grid">
+          <button type="button" id="medBtn" class="toggle-btn">💊 약 복용</button>
+          <button type="button" id="workoutBtn" class="toggle-btn">🏃 운동</button>
+        </div>
+
+        <div class="water-box">
+          <p>💧 물 마신 컵 수</p>
+          <div class="water-actions">
+            <button type="button" id="waterMinus">-</button>
+            <strong id="waterCount">0</strong>
+            <button type="button" id="waterPlus">+</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="meal-card">
+        <h2>아침 / 점심 / 저녁</h2>
+        <form id="mealForm" class="stacked-form meal-form">
+          <label for="breakfastInput">아침</label>
+          <input id="breakfastInput" type="text" placeholder="예: 바나나 + 삶은계란" />
+
+          <label for="lunchInput">점심</label>
+          <input id="lunchInput" type="text" placeholder="예: 현미밥 + 생선" />
+
+          <label for="dinnerInput">저녁</label>
+          <input id="dinnerInput" type="text" placeholder="예: 두부 샐러드" />
+
+          <button type="submit">식단 저장</button>
+        </form>
+      </section>
+    </aside>
+
+    <section class="chat-panel card">
+      <header class="chat-header">
+        <h2 id="chatTitle">캐릭터와 대화</h2>
+      </header>
+      <div id="chatLog" class="chat-log" aria-live="polite"></div>
+      <form id="chatForm" class="chat-composer">
+        <input id="chatInput" type="text" placeholder="오늘 컨디션/식단/운동 상태를 말해보세요" required />
+        <button type="submit">전송</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
